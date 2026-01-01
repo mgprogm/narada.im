@@ -139,8 +139,8 @@ Send reply back to Messenger
 
 ### Backend
 - **API:** Next.js API Routes
-- **Database:** MongoDB (Atlas Free tier)
-- **Auth:** NextAuth.js
+- **Database:** Supabase (PostgreSQL)
+- **Auth:** Supabase Auth หรือ NextAuth.js
 - **AI:** OpenAI GPT-4o-mini หรือ Claude API
 
 ### Payment
@@ -149,7 +149,7 @@ Send reply back to Messenger
 
 ### Deployment
 - **Hosting:** Vercel (Free tier)
-- **Database:** MongoDB Atlas (Free tier - 512MB)
+- **Database:** Supabase (Free tier)
 - **Domain:** Namecheap/CloudFlare
 
 ---
