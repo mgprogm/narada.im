@@ -46,8 +46,9 @@ CREATE INDEX idx_faqs_is_active ON public.faqs(is_active);
 CREATE INDEX idx_faqs_user_active ON public.faqs(user_id, is_active);
 
 -- Full text search index for question matching
-CREATE INDEX idx_faqs_question_search ON public.faqs USING gin(to_tsvector('thai', question));
-CREATE INDEX idx_faqs_answer_search ON public.faqs USING gin(to_tsvector('thai', answer));
+-- Using 'simple' config which works with Thai and all languages (no stemming)
+CREATE INDEX idx_faqs_question_search ON public.faqs USING gin(to_tsvector('simple', question));
+CREATE INDEX idx_faqs_answer_search ON public.faqs USING gin(to_tsvector('simple', answer));
 
 -- ============================================================================
 -- CONVERSATIONS TABLE

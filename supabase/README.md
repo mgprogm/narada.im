@@ -188,9 +188,9 @@ After database setup:
 - Verify RLS policies are enabled
 - Check if you're authenticated
 
-**Full-text search not working for Thai**
-- Ensure Thai language support is configured
-- The schema includes `to_tsvector('thai', ...)` for proper Thai text search
+**Full-text search not working**
+- The schema uses `to_tsvector('simple', ...)` which works with Thai and all languages
+- The 'simple' configuration doesn't do language-specific stemming but provides universal text search
 
 **Trigger not firing**
 - Check if triggers are enabled

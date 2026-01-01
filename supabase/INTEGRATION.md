@@ -140,7 +140,7 @@ const { data, error } = await supabase
   .select('*')
   .textSearch('question', searchTerm, {
     type: 'websearch',
-    config: 'thai'
+    config: 'simple' // 'simple' works with Thai and all languages
   })
 ```
 
