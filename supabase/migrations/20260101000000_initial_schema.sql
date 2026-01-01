@@ -1,4 +1,4 @@
--- SmartSales Assistant Database Schema
+-- Narada Project Database Schema
 -- Initial migration for all core tables
 
 -- Enable UUID extension

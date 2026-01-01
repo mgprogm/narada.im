@@ -12,7 +12,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <MessageSquare className="w-6 h-6 text-blue-600" />
-            <span className="text-xl font-bold">SmartSales Assistant</span>
+            <span className="text-xl font-bold">Narada</span>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/login">
@@ -111,7 +111,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-4">
-              SmartSales Assistant แก้ปัญหาได้ยังไง?
+              Narada แก้ปัญหาได้ยังไง?
             </h2>
             <p className="text-center text-slate-600 mb-12">
               ระบบ AI ที่เข้าใจภาษาไทย ช่วยคุณตอบลูกค้าได้อย่างเป็นธรรมชาติ
@@ -284,7 +284,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 bg-slate-900 text-slate-400">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2026 SmartSales Assistant. All rights reserved.</p>
+          <p>&copy; 2026 Narada. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -50,7 +50,7 @@ export default function LoginPage() {
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">เข้าสู่ระบบ</CardTitle>
           <CardDescription className="text-center">
-            กรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ SmartSales Assistant
+            กรอกอีเมลและรหัสผ่านเพื่อเข้าสู่ระบบ Narada
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>

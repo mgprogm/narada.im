@@ -1,5 +1,5 @@
 -- Seed Data (Optional)
--- Sample FAQ data for testing the SmartSales Assistant
+-- Sample FAQ data for testing the Narada Project
 
 -- This file contains example FAQs in Thai for testing purposes
 -- You can run this after setting up a test user account

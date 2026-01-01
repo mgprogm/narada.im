@@ -1,6 +1,6 @@
 # Supabase Database Setup
 
-This directory contains the database schema and migrations for the SmartSales Assistant project.
+This directory contains the database schema and migrations for the Narada Project.
 
 ## Database Schema Overview
 

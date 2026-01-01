@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**SmartSales Assistant** - An AI-powered chatbot system that automatically responds to customers 24/7 via Facebook Messenger. The system helps Thai SME businesses (online shops, clinics, service businesses) manage customer inquiries using an FAQ engine combined with AI-generated responses.
+**Narada** - An AI-powered chatbot system that automatically responds to customers 24/7 via Facebook Messenger. The system helps Thai SME businesses (online shops, clinics, service businesses) manage customer inquiries using an FAQ engine combined with AI-generated responses.
 
 **Core Architecture:** Webhook-based system where Facebook Messenger sends webhooks to the server, the FAQ Engine attempts keyword matching, and if no match is found, an AI Generator creates contextual responses. Responses are sent back to customers within 2-5 seconds.
 

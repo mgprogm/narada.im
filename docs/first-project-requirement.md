@@ -1,6 +1,6 @@
 # Project Requirements: AI Chatbot ตอบอัตโนมัติผ่าน Facebook Messenger
 
-**Project Name:** SmartSales Assistant (ชื่อเบื้องต้น)
+**Project Name:** Narada
 **Timeline:** 7 วัน
 **Launch Date:** [กำหนดหลังจากเริ่มโปรเจค]
 **Architecture:** Webhook-based (Revenue-first / Minimal MVP)

@@ -104,7 +104,7 @@ export default function RegisterPage() {
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">สมัครสมาชิก</CardTitle>
           <CardDescription className="text-center">
-            เริ่มใช้งาน SmartSales Assistant ฟรี 7 วัน
+            เริ่มใช้งาน Narada ฟรี 7 วัน
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
