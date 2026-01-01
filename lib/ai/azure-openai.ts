@@ -1,12 +1,5 @@
-import { AzureOpenAI } from "@azure/openai";
-
-// Initialize Azure OpenAI client
-const client = new AzureOpenAI({
-  endpoint: process.env.AZURE_OPENAI_ENDPOINT,
-  apiKey: process.env.AZURE_OPENAI_API_KEY,
-  apiVersion: process.env.AZURE_OPENAI_API_VERSION,
-  deployment: process.env.AZURE_OPENAI_DEPLOYMENT_NAME,
-});
+import { OpenAI } from "openai";
+import type { ToneType } from "@/types";
 
 // Tone presets for Thai language responses
 export const tonePresets = {
@@ -36,35 +29,17 @@ export const tonePresets = {
   },
 };
 
-export type ToneType = keyof typeof tonePresets;
-
-interface GenerateResponseOptions {
-  customerQuestion: string;
-  faqs: Array<{ question: string; answer: string; category?: string }>;
-  tone: ToneType;
-  shopName?: string;
-  customInstructions?: string;
-}
-
 /**
  * Generate AI response for customer question based on FAQs and tone
  */
-export async function generateResponse({
-  customerQuestion,
-  faqs,
-  tone,
-  shopName = "ร้านค้า",
-  customInstructions = "",
-}: GenerateResponseOptions): Promise<string> {
+export async function generateResponse(
+  customerQuestion: string,
+  faqContext: string,
+  tone: ToneType,
+  shopName: string = "ร้านค้า",
+  customInstructions: string = ""
+): Promise<string> {
   const tonePreset = tonePresets[tone];
-
-  // Build FAQ context
-  const faqContext = faqs
-    .map(
-      (faq, index) =>
-        `${index + 1}. คำถาม: ${faq.question}\n   คำตอบ: ${faq.answer}\n   หมวดหมู่: ${faq.category || "ทั่วไป"}`
-    )
-    .join("\n\n");
 
   // Build system prompt
   const systemPrompt = `${tonePreset.systemPrompt}
@@ -84,6 +59,14 @@ ${customInstructions ? `คำแนะนำเพิ่มเติม: ${cust
 5. ถ้าคำถามคล้ายกับหลาย FAQ ให้ตอบครอบคลุมทุกมุม`;
 
   try {
+    // Initialize Azure OpenAI client
+    const client = new OpenAI({
+      apiKey: process.env.AZURE_OPENAI_API_KEY,
+      baseURL: `${process.env.AZURE_OPENAI_ENDPOINT}/openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT_NAME}`,
+      defaultQuery: { "api-version": process.env.AZURE_OPENAI_API_VERSION },
+      defaultHeaders: { "api-key": process.env.AZURE_OPENAI_API_KEY },
+    });
+
     const response = await client.chat.completions.create({
       model: process.env.AZURE_OPENAI_DEPLOYMENT_NAME!,
       messages: [
@@ -112,6 +95,13 @@ ${customInstructions ? `คำแนะนำเพิ่มเติม: ${cust
  */
 export async function testConnection(): Promise<boolean> {
   try {
+    const client = new OpenAI({
+      apiKey: process.env.AZURE_OPENAI_API_KEY,
+      baseURL: `${process.env.AZURE_OPENAI_ENDPOINT}/openai/deployments/${process.env.AZURE_OPENAI_DEPLOYMENT_NAME}`,
+      defaultQuery: { "api-version": process.env.AZURE_OPENAI_API_VERSION },
+      defaultHeaders: { "api-key": process.env.AZURE_OPENAI_API_KEY },
+    });
+
     const response = await client.chat.completions.create({
       model: process.env.AZURE_OPENAI_DEPLOYMENT_NAME!,
       messages: [

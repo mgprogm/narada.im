@@ -33,9 +33,7 @@ export type FAQInput = z.infer<typeof faqSchema>;
 
 // Settings validations
 export const settingsSchema = z.object({
-  tone: z.enum(["polite", "friendly", "professional", "vendor"], {
-    required_error: "กรุณาเลือก tone",
-  }),
+  tone: z.enum(["polite", "friendly", "professional", "vendor"]),
   shop_name: z.string().min(2, "ชื่อร้านต้องมีอย่างน้อย 2 ตัวอักษร"),
   greeting_message: z.string().max(200, "ข้อความทักทายต้องไม่เกิน 200 ตัวอักษร").optional(),
   custom_instructions: z.string().max(500, "คำแนะนำเพิ่มเติมต้องไม่เกิน 500 ตัวอักษร").optional(),
