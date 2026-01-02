@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageSquare, FileText, History, TrendingUp } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: 'Dashboard - ภาพรวมการใช้งาน',
+};
 
 export default function DashboardPage() {
   return (

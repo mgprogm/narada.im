@@ -1,12 +1,94 @@
 import Link from "next/link";
+import Script from "next/script";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare, Clock, TrendingUp, Sparkles, Check, AlertCircle, RefreshCw, Moon, DollarSign } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: 'ตอบลูกค้าอัตโนมัติ 24/7 บน Facebook Messenger ด้วย AI',
+  description: 'Narada ช่วยร้านค้าออนไลน์ตอบคำถามลูกค้าอัตโนมัติด้วย AI ภาษาไทย ตอบทันที 2-5 วินาที ไม่พลาดโอกาสทั้งกลางวันและกลางคืน ทดลองฟรี 7 วัน ไม่ต้องใส่บัตรเครดิต',
+  openGraph: {
+    title: 'Narada - ตอบลูกค้าอัตโนมัติ 24/7 บน Facebook Messenger',
+    description: 'ให้ AI ช่วยตอบคำถามซ้ำๆ ของลูกค้า ลดภาระงานแอดมิน เพิ่มยอดขาย ตอบทันที 2-5 วินาที',
+    url: '/',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Narada - AI Chatbot for Thai SME Businesses'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Narada - ตอบลูกค้าอัตโนมัติ 24/7 บน Facebook Messenger',
+    description: 'ให้ AI ช่วยตอบคำถามซ้ำๆ ของลูกค้า ลดภาระงานแอดมิน เพิ่มยอดขาย',
+    images: ['/og-image.png']
+  },
+  alternates: {
+    canonical: '/'
+  }
+};
+
 export default function Home() {
+  const softwareSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Narada',
+    applicationCategory: 'BusinessApplication',
+    description: 'ระบบตอบลูกค้าอัตโนมัติด้วย AI บน Facebook Messenger ตอบทันที 2-5 วินาที ลดภาระงานแอดมิน เพิ่มยอดขาย',
+    operatingSystem: 'Web',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Free Trial',
+        price: '0',
+        priceCurrency: 'THB',
+        priceValidUntil: '2027-12-31',
+        category: 'Trial'
+      },
+      {
+        '@type': 'Offer',
+        name: 'Starter Plan',
+        price: '499',
+        priceCurrency: 'THB',
+        billingDuration: 'P1M',
+        category: 'Subscription'
+      },
+      {
+        '@type': 'Offer',
+        name: 'Pro Plan',
+        price: '999',
+        priceCurrency: 'THB',
+        billingDuration: 'P1M',
+        category: 'Subscription'
+      }
+    ],
+    featureList: [
+      'ตอบลูกค้าอัตโนมัติ 24/7',
+      'AI เข้าใจภาษาไทย',
+      'ตอบทันที 2-5 วินาที',
+      'ระบบ FAQ อัจฉริยะ',
+      'รองรับ Facebook Messenger'
+    ],
+    author: {
+      '@type': 'Organization',
+      name: 'Narada'
+    }
+  };
+
   return (
     <div className="min-h-screen">
+      <Script
+        id="software-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema)
+        }}
+      />
       {/* Header */}
       <header className="border-b border-border bg-surface-100">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">

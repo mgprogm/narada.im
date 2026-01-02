@@ -15,6 +15,102 @@ An AI-powered chatbot system that automatically responds to customers 24/7 via F
 - **Conversation History** - Track and learn from customer interactions
 - **Subscription Management** - Free trial + paid tiers with usage limits
 
+## SEO Implementation
+
+The application includes comprehensive SEO optimization for the Thai market:
+
+### Metadata & Social Sharing
+
+- **Thai-Optimized Keywords**: Primary keywords include "AI chatbot ภาษาไทย", "ตอบลูกค้าอัตโนมัติ", "Facebook Messenger bot"
+- **OpenGraph Tags**: Full og:title, og:description, og:image, og:url for social media sharing
+- **Twitter Cards**: summary_large_image cards for rich Twitter/X previews
+- **Canonical URLs**: Proper canonical tags on all pages to prevent duplicate content
+- **Per-Page Metadata**: Unique title and description for each page
+
+### Structured Data (JSON-LD)
+
+Two schema types are implemented:
+
+1. **Organization Schema** (Root layout)
+   - Brand identity for Google Knowledge Graph
+   - Contact information and founding date
+   - Available languages (Thai, English)
+
+2. **SoftwareApplication Schema** (Landing page)
+   - Application category: BusinessApplication
+   - Pricing offers (Free Trial, Starter 499฿, Pro 999฿)
+   - Feature list in Thai
+   - Enables rich snippets with pricing in search results
+
+### Technical SEO
+
+- **Dynamic Sitemap** (`/sitemap.xml`)
+  - Auto-generated via `app/sitemap.ts`
+  - Includes landing page (priority: 1), login, and register pages
+  - Weekly/monthly update frequencies
+
+- **Robots.txt** (`/robots.txt`)
+  - Auto-generated via `app/robots.ts`
+  - Allows crawling of public pages
+  - Blocks `/dashboard/` and `/api/` endpoints
+  - References sitemap location
+
+- **noindex Directives**
+  - Auth pages (login/register) set to noindex/nofollow
+  - Dashboard pages protected from indexing
+  - Prevents low-value pages from appearing in search results
+
+### SEO Environment Variables
+
+Add to your `.env.local` and Vercel environment variables:
+
+```bash
+NEXT_PUBLIC_APP_URL=https://narada.im
+```
+
+This is used for:
+- Canonical URLs
+- OpenGraph URLs
+- Sitemap base URLs
+- Structured data references
+
+### Validation & Testing
+
+After deployment, validate your SEO implementation:
+
+1. **Google Rich Results Test**: https://search.google.com/test/rich-results
+2. **Schema.org Validator**: https://validator.schema.org/
+3. **Facebook Sharing Debugger**: https://developers.facebook.com/tools/debug/
+4. **Twitter Card Validator**: https://cards-dev.twitter.com/validator
+5. **Mobile-Friendly Test**: https://search.google.com/test/mobile-friendly
+
+### SEO Monitoring
+
+Set up these tools for ongoing SEO monitoring:
+
+- **Google Search Console**: Submit sitemap and monitor index coverage
+- **Google Analytics 4**: Track organic search traffic and conversions
+- Monitor keywords: "AI chatbot ภาษาไทย", "ตอบลูกค้าอัตโนมัติ", "Facebook Messenger bot"
+
+### Expected Impact
+
+**Short-term (1-4 weeks)**:
+- Landing page indexed by Google
+- Proper OG images on Facebook/LINE shares
+- Organization schema in Knowledge Graph
+
+**Medium-term (1-3 months)**:
+- Rankings for brand queries ("Narada chatbot")
+- Long-tail keyword rankings in Thai
+- Rich snippets with pricing (Free, 499฿, 999฿)
+- 5%+ CTR from search results
+
+**Long-term (3-6 months)**:
+- Top 10 rankings for "AI chatbot ภาษาไทย"
+- 500+ organic users/month
+- Featured snippets for FAQ queries
+- 15% organic → trial conversion rate
+
 ## Design System
 
 The project implements a professional design system based on Supabase's design philosophy:
@@ -94,6 +190,7 @@ cp .env.example .env.local
 Edit `.env.local` and add your credentials:
 - Supabase URL and keys
 - OpenAI/Azure OpenAI credentials
+- `NEXT_PUBLIC_APP_URL` - Your production URL (e.g., https://narada.im)
 
 4. Apply database migrations
 
@@ -139,6 +236,7 @@ npm start
    - Import your repository
 
 3. Configure environment variables in Vercel dashboard:
+   - `NEXT_PUBLIC_APP_URL` (e.g., https://narada.im)
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
@@ -157,8 +255,20 @@ npm start
 narada.im/
 ├── app/                    # Next.js app directory
 │   ├── (auth)/            # Authentication pages (login, register)
-│   ├── dashboard/         # Protected dashboard pages
-│   └── api/               # API routes
+│   │   └── layout.tsx    # Auth layout with noindex metadata
+│   ├── (dashboard)/       # Protected dashboard pages
+│   │   ├── layout.tsx    # Dashboard layout with noindex metadata
+│   │   ├── dashboard/    # Main dashboard
+│   │   ├── generator/    # AI answer generator
+│   │   ├── faqs/         # FAQ management
+│   │   ├── settings/     # Bot settings
+│   │   └── history/      # Conversation history
+│   ├── api/              # API routes
+│   ├── layout.tsx        # Root layout with SEO metadata
+│   ├── page.tsx          # Landing page with structured data
+│   ├── sitemap.ts        # Dynamic sitemap generation
+│   ├── robots.ts         # Robots.txt configuration
+│   └── icon.svg          # Favicon
 ├── components/            # React components
 │   ├── ui/               # shadcn/ui components
 │   └── dashboard/        # Dashboard-specific components
@@ -270,6 +380,12 @@ The project is configured for optimal Vercel deployment:
 - ✓ FAQ management
 - ✓ AI answer generator
 - ✓ Basic dashboard
+- ✓ **Comprehensive SEO implementation**
+  - ✓ Thai-optimized metadata and keywords
+  - ✓ OpenGraph and Twitter Card tags
+  - ✓ JSON-LD structured data (Organization + SoftwareApplication)
+  - ✓ Dynamic sitemap and robots.txt
+  - ✓ Per-page metadata optimization
 
 ### Phase 2 (Week 2-4)
 - [ ] Facebook Messenger webhook integration
