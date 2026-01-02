@@ -39,7 +39,17 @@ export function DashboardNav() {
   return (
     <aside className="w-64 bg-surface-100 border-r border-border flex flex-col">
       <div className="p-6 border-b border-border">
-        <h1 className="text-xl font-bold text-foreground">Narada</h1>
+        <div className="flex items-center gap-2 mb-1">
+          <div className="relative w-12 h-12">
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#00d4ff] via-[#52d36f] to-[#0099ff] animate-border-spin animate-gradient bg-[length:200%_auto]"></div>
+            <div className="absolute inset-[2px] rounded-lg bg-white border-2 border-[#52d36f] flex items-center justify-center">
+              <span className="font-black text-2xl bg-gradient-to-r from-[#52d36f] via-[#7de68f] to-[#52d36f] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                N
+              </span>
+            </div>
+          </div>
+          <h1 className="text-xl font-bold text-foreground">narada</h1>
+        </div>
         <p className="text-sm text-foreground-light">AI Assistant</p>
       </div>
       <nav className="flex-1 p-4 space-y-1">

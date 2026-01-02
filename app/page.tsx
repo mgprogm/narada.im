@@ -11,8 +11,15 @@ export default function Home() {
       <header className="border-b border-border bg-surface-100">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-6 h-6 text-brand" />
-            <span className="text-xl font-bold">Narada</span>
+            <div className="relative w-12 h-12">
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#00d4ff] via-[#52d36f] to-[#0099ff] animate-border-spin animate-gradient bg-[length:200%_auto]"></div>
+              <div className="absolute inset-[2px] rounded-lg bg-white border-2 border-[#52d36f] flex items-center justify-center">
+                <span className="font-black text-2xl bg-gradient-to-r from-[#52d36f] via-[#7de68f] to-[#52d36f] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                  N
+                </span>
+              </div>
+            </div>
+            <span className="text-xl font-bold">narada</span>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/login">
