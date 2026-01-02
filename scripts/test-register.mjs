@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { readFileSync } from 'fs';
 
 // Read environment variables from .env.local
-const envContent = readFileSync('.env.local', 'utf8');
+const envContent = readFileSync('../.env.local', 'utf8');
 const envVars = {};
 envContent.split('\n').forEach(line => {
   const match = line.match(/^([^#=]+)=(.*)$/);

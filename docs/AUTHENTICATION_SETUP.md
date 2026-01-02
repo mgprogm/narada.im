@@ -310,13 +310,29 @@ CREATE POLICY "Users can update own profile"
 4. Try accessing dashboard → redirects to login
 
 ### Automated Testing
-An automated test script is available at `test-auth.mjs`:
+Multiple test scripts are available in the `scripts/` directory:
 
 ```bash
-node --env-file=.env.local test-auth.mjs
+# Test authentication flow
+node scripts/test-auth.mjs
+
+# Test registration flow
+node scripts/test-register.mjs
+
+# Create a test user directly
+node scripts/create-test-user-direct.mjs
+
+# List all users
+node scripts/list-users.mjs
+
+# Verify user authentication
+node scripts/verify-user.mjs
+
+# Reset all database data (WARNING: irreversible!)
+node scripts/reset-all-data.mjs
 ```
 
-This tests:
+The test scripts verify:
 - User registration
 - Profile creation via RPC function
 - Settings auto-creation
@@ -325,6 +341,8 @@ This tests:
 - Logout
 
 **Note**: Supabase has rate limiting on signups. If you get "email rate limit exceeded", wait a few minutes or test manually in browser.
+
+For more details on available scripts, see `scripts/README.md`.
 
 ## Troubleshooting
 
