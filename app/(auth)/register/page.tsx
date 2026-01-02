@@ -57,36 +57,29 @@ export default function RegisterPage() {
       }
 
       if (data.user) {
-        // Create profile record
-        const trialEndsAt = new Date();
-        trialEndsAt.setDate(trialEndsAt.getDate() + 7); // 7-day trial
-
-        const { error: profileError } = await supabase
-          .from("profiles")
-          .insert({
-            id: data.user.id,
-            shop_name: shopName,
-            plan_type: "free",
-            trial_ends_at: trialEndsAt.toISOString(),
+        // Create user profile using database function (bypasses RLS issues)
+        const { data: profileData, error: userError } = await supabase
+          .rpc("create_user_profile", {
+            p_user_id: data.user.id,
+            p_email: email,
+            p_shop_name: shopName,
+            p_plan_type: "free",
+            p_trial_days: 7,
           });
 
-        if (profileError) {
-          console.error("Profile creation error:", profileError);
+        if (userError) {
+          console.error("User profile creation error:", userError);
+          setError("เกิดข้อผิดพลาดในการสร้างโปรไฟล์");
+          return;
         }
 
-        // Create default settings
-        const { error: settingsError } = await supabase
-          .from("settings")
-          .insert({
-            user_id: data.user.id,
-            tone: "friendly",
-            shop_name: shopName,
-            greeting_message: `สวัสดีค่ะ ยินดีต้อนรับสู่ ${shopName} มีอะไรให้ช่วยไหมคะ?`,
-          });
-
-        if (settingsError) {
-          console.error("Settings creation error:", settingsError);
+        if (profileData && !profileData.success) {
+          console.error("User profile creation failed:", profileData.error);
+          setError("เกิดข้อผิดพลาดในการสร้างโปรไฟล์: " + profileData.error);
+          return;
         }
+
+        // Default settings are created automatically by database trigger
 
         router.push("/dashboard");
         router.refresh();
