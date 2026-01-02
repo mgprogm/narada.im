@@ -205,7 +205,69 @@ PORT=3001 npm run dev
 
 ---
 
-#### 8. Module Not Found Errors
+#### 8. Vercel Build Error: "useTheme must be used within a ThemeProvider"
+
+**Symptoms:**
+```
+Error occurred prerendering page "/dashboard"
+Error: useTheme must be used within a ThemeProvider
+Export encountered an error on /(dashboard)/dashboard/page
+```
+
+**Root Cause:**
+The `ThemeSwitcher` component was calling `useTheme()` during server-side rendering (SSR) or static site generation (SSG), but the `ThemeProvider` context is not available during the build process in Next.js.
+
+**Solution:**
+The `ThemeSwitcher` component has been refactored to be self-contained and SSR-safe:
+
+1. It no longer depends on `useTheme()` from `ThemeProvider`
+2. Uses local state and manages `localStorage` directly
+3. Implements a `mounted` check to prevent hydration errors
+
+**Code Reference:**
+See `components/theme-switcher.tsx` for the implementation.
+
+**Verification:**
+```bash
+# Build should complete successfully
+npm run build
+
+# Should see output like:
+# ✓ Generating static pages (11/11)
+# Route (app)
+# ○ /dashboard
+```
+
+**When to Watch For:**
+This error can occur when:
+- Using React Context in client components that are rendered during SSG
+- Accessing browser APIs (localStorage, window) during server render
+- Using hooks that depend on client-side context during build time
+
+**Best Practice:**
+For components that use browser APIs or client-only features:
+```typescript
+"use client";
+
+export function MyComponent() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render client-only content during SSR
+  if (!mounted) {
+    return <LoadingState />;
+  }
+
+  return <ClientOnlyContent />;
+}
+```
+
+---
+
+#### 9. Module Not Found Errors
 
 **Symptoms:**
 ```

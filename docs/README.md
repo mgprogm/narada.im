@@ -85,6 +85,7 @@ Welcome to the Narada project documentation. This folder contains all technical 
 - Brand colors not showing
 - Dark mode not working
 - Font loading issues
+- Vercel build errors (SSR/SSG issues)
 - Environment setup
 - Database connection problems
 - Performance issues
@@ -287,6 +288,8 @@ grep -ir "tailwind" docs/
    - Brand color now displays correctly (#34B27B)
    - All UI components rendering properly
    - Thai characters render correctly with proper tone marks
+   - Fixed Vercel build error: ThemeSwitcher SSR/SSG compatibility
+   - Production builds now succeed without errors
 
 ---
 

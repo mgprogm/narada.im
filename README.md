@@ -90,6 +90,48 @@ npm run dev
 
 Visit `http://localhost:3000` to see the application.
 
+### Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The build process will:
+- Compile TypeScript code
+- Generate static pages for optimal performance
+- Optimize assets and bundles
+- Validate all routes and API endpoints
+
+To start the production server locally:
+
+```bash
+npm start
+```
+
+### Deployment to Vercel
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+
+2. Connect your repository to Vercel:
+   - Visit [vercel.com](https://vercel.com)
+   - Click "New Project"
+   - Import your repository
+
+3. Configure environment variables in Vercel dashboard:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - Azure OpenAI credentials (or OpenAI API key)
+
+4. Deploy! Vercel will automatically:
+   - Build your application
+   - Deploy to a global CDN
+   - Provide a production URL
+
+**Note**: The theme system has been optimized for SSR/SSG compatibility to ensure successful Vercel builds.
+
 ## Project Structure
 
 ```
@@ -162,6 +204,29 @@ For more information, see [scripts/README.md](scripts/README.md).
 - **Migrations**: Located in `supabase/migrations/`
 - **Schema**: Initial schema includes users, FAQs, conversations, and settings tables
 - **Row Level Security**: Enabled on all tables with user-specific policies
+
+## Architecture Notes
+
+### Theme System
+
+The application uses a custom theme system that supports light, dark, and system themes:
+
+- **ThemeProvider** (`components/theme-provider.tsx`): React Context provider for theme state
+- **ThemeSwitcher** (`components/theme-switcher.tsx`): UI component for theme selection
+- **SSR/SSG Compatible**: Theme components are optimized to prevent hydration errors during static generation
+
+The theme system uses:
+- `localStorage` for persistence
+- `data-theme` attribute on `<html>` for CSS theming
+- Inline script in `app/layout.tsx` to prevent flash of unstyled content (FOUC)
+
+### Build Optimization
+
+The project is configured for optimal Vercel deployment:
+- All pages are statically generated where possible
+- Client components use mounted state checks to prevent SSR errors
+- API routes are dynamically rendered on-demand
+- Middleware proxy pattern for authentication
 
 ## Documentation
 
