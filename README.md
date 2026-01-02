@@ -15,12 +15,27 @@ An AI-powered chatbot system that automatically responds to customers 24/7 via F
 - **Conversation History** - Track and learn from customer interactions
 - **Subscription Management** - Free trial + paid tiers with usage limits
 
+## Design System
+
+The project implements a professional design system based on Supabase's design philosophy:
+
+- **Color Palette**: Jungle Green (#34B27B) brand color with semantic color tokens
+- **Typography**: Sarabun font family optimized for Thai-English bilingual content
+- **Thai Language Support**: Native Thai character rendering with proper tone marks and vowel positioning
+- **Icons**: Lucide React with muted, monochromatic style and semantic colors
+- **Dark Mode**: Fully supported with `[data-theme="dark"]` attribute
+- **Components**: shadcn/ui components styled with Supabase design tokens
+
+For complete design system documentation, see [docs/DESIGN_SYSTEM_IMPLEMENTATION.md](docs/DESIGN_SYSTEM_IMPLEMENTATION.md).
+
 ## Tech Stack
 
 ### Frontend
 - **Next.js 14** (App Router)
-- **Tailwind CSS + shadcn/ui**
-- **React Hook Form + Zod**
+- **Tailwind CSS + shadcn/ui** - Supabase design system
+- **Sarabun Font** (Google Fonts) - Native Thai language support
+- **Lucide React** - Icon library with semantic colors
+- **React Hook Form + Zod** - Form handling and validation
 
 ### Backend
 - **Next.js API Routes**
@@ -43,7 +58,7 @@ An AI-powered chatbot system that automatically responds to customers 24/7 via F
 
 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/mgprogm/narada.im.git
 cd narada.im
 ```
 
@@ -98,8 +113,13 @@ narada.im/
 │   ├── list-users.mjs            # List all users
 │   └── verify-user.mjs           # Verify user auth
 └── docs/                # Documentation
-    ├── AUTHENTICATION_SETUP.md   # Auth system guide
-    └── first-project-requirement.md  # Project requirements
+    ├── AUTHENTICATION_SETUP.md          # Auth system guide
+    ├── DESIGN_SYSTEM_IMPLEMENTATION.md  # Design system guide
+    ├── SUPABASE_DESIGN_SYSTEM.md        # Supabase design reference
+    ├── ICON_REFERENCE.md                # Icon usage guide
+    ├── TROUBLESHOOTING.md               # Common issues
+    ├── first-project-requirement.md     # Project requirements
+    └── README.md                        # Documentation index
 
 ```
 
@@ -146,13 +166,21 @@ For more information, see [scripts/README.md](scripts/README.md).
 ## Documentation
 
 - [Authentication Setup Guide](docs/AUTHENTICATION_SETUP.md) - Detailed guide for setting up authentication
+- [Design System Implementation](docs/DESIGN_SYSTEM_IMPLEMENTATION.md) - Complete design system guide with Supabase colors, typography, and Thai font support
+- [Supabase Design System](docs/SUPABASE_DESIGN_SYSTEM.md) - Official Supabase design reference
+- [Icon Reference](docs/ICON_REFERENCE.md) - Lucide React icon usage guide
 - [Project Requirements](docs/first-project-requirement.md) - Original project requirements and specifications
+- [Troubleshooting Guide](docs/TROUBLESHOOTING.md) - Common issues and solutions
 - [Claude Instructions](CLAUDE.md) - Instructions for Claude Code AI assistant
 
 ## Features Roadmap
 
 ### Phase 1 (Week 1) - MVP ✓
 - ✓ User authentication and registration
+- ✓ Supabase design system with Jungle Green (#34B27B) brand color
+- ✓ Professional Lucide React icon system
+- ✓ Sarabun font with native Thai language support
+- ✓ Dark mode support
 - ✓ FAQ management
 - ✓ AI answer generator
 - ✓ Basic dashboard

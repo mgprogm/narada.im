@@ -29,7 +29,7 @@ Welcome to the Narada project documentation. This folder contains all technical 
 **Complete Supabase design system reference guide**
 
 - Color system (Jungle Green #34B27B)
-- Typography (Inter font, type scale)
+- Typography (Sarabun font with Thai support, type scale)
 - Component patterns (buttons, cards, forms)
 - Layout and spacing guidelines
 - Tailwind configuration examples
@@ -44,14 +44,39 @@ Welcome to the Narada project documentation. This folder contains all technical 
 - File structure and configuration
 - Critical issue documentation (Tailwind v4 → v3)
 - Theme switching implementation
+- Icon system (Lucide React with semantic colors)
+- Thai language support (Sarabun font)
 - Performance optimization
 - Maintenance guides
 
 **Use when:** Setting up the project, fixing styling issues, understanding architecture
 
+#### [`ICON_REFERENCE.md`](./ICON_REFERENCE.md)
+**Lucide React icon usage guide**
+
+- Icon selection guidelines
+- Semantic color mapping (destructive, warning, brand, neutral)
+- Size and spacing standards
+- Code examples for common patterns
+- Accessibility considerations
+
+**Use when:** Adding icons to UI, ensuring consistent icon usage
+
 ---
 
-### Troubleshooting
+### Technical Guides
+
+#### [`AUTHENTICATION_SETUP.md`](./AUTHENTICATION_SETUP.md)
+**Complete authentication system guide**
+
+- Supabase authentication setup
+- User registration flow
+- Login and session management
+- Row Level Security (RLS) policies
+- Testing utilities and scripts
+- Common authentication issues
+
+**Use when:** Setting up auth, debugging login issues, implementing user management
 
 #### [`TROUBLESHOOTING.md`](./TROUBLESHOOTING.md)
 **Common issues and their solutions**
@@ -172,11 +197,13 @@ first-project-requirement.md (Root planning doc)
 - **Type:** AI-powered chatbot for Facebook Messenger
 - **Tech Stack:** Next.js 16.1.1, Tailwind v3.4, Supabase, TypeScript
 - **Design System:** Supabase-inspired with Jungle Green (#34B27B)
+- **Font:** Sarabun (Google Fonts) with Thai language support
+- **Icons:** Lucide React with semantic colors
 - **Status:** Day 1 Completed ✅
 
 ### Important Links
 
-- **GitHub:** [Repository URL]
+- **GitHub:** https://github.com/mgprogm/narada.im.git
 - **Deployment:** [Vercel URL]
 - **Supabase:** [Dashboard URL]
 - **Figma:** [Design URL]
@@ -207,8 +234,10 @@ When creating new features, ensure:
 ### Find by Topic
 
 - **Colors:** `SUPABASE_DESIGN_SYSTEM.md` → Color System
-- **Typography:** `SUPABASE_DESIGN_SYSTEM.md` → Typography
+- **Typography:** `SUPABASE_DESIGN_SYSTEM.md` → Typography / `DESIGN_SYSTEM_IMPLEMENTATION.md` → Thai Language Support
+- **Icons:** `ICON_REFERENCE.md` → Icon Usage Guide / `DESIGN_SYSTEM_IMPLEMENTATION.md` → Icons
 - **Components:** `SUPABASE_DESIGN_SYSTEM.md` → Component Patterns
+- **Authentication:** `AUTHENTICATION_SETUP.md` → Auth System Guide
 - **Setup:** `DESIGN_SYSTEM_IMPLEMENTATION.md` → Implementation
 - **Errors:** `TROUBLESHOOTING.md` → Common Issues
 - **Timeline:** `first-project-requirement.md` → Roadmap
@@ -239,15 +268,25 @@ grep -ir "tailwind" docs/
    - Tailwind v3 configured correctly
    - Theme system with dark mode support
 
-2. 📝 **Documentation created**
-   - `DESIGN_SYSTEM_IMPLEMENTATION.md` - Complete implementation guide
+2. 🎨 **Design System Enhancements**
+   - Replaced emoji icons with professional Lucide React icons
+   - Implemented semantic color system for icons (destructive, warning, brand, neutral)
+   - Replaced Inter with Sarabun font for native Thai language support
+   - Added Thai subset (latin, latin-ext, thai) for proper character rendering
+   - Optimized font weights (400, 600, 700, 800)
+
+3. 📝 **Documentation created**
+   - `DESIGN_SYSTEM_IMPLEMENTATION.md` - Complete implementation guide with icon and font sections
+   - `ICON_REFERENCE.md` - Lucide React icon usage guide
+   - `AUTHENTICATION_SETUP.md` - Complete auth system guide
    - `TROUBLESHOOTING.md` - Common issues and solutions
    - Updated `first-project-requirement.md` with progress
 
-3. 🐛 **Issues resolved**
+4. 🐛 **Issues resolved**
    - Fixed Tailwind v4 → v3 compatibility issue
    - Brand color now displays correctly (#34B27B)
    - All UI components rendering properly
+   - Thai characters render correctly with proper tone marks
 
 ---
 
@@ -308,8 +347,8 @@ Brief description of what this document covers.
 ---
 
 **Last Updated:** 2026-01-02
-**Documentation Version:** 1.0
-**Project Status:** 🚀 Ready for Day 2
+**Documentation Version:** 1.2
+**Project Status:** 🚀 Day 1 Complete - Design System Implemented
 
 ---
 
