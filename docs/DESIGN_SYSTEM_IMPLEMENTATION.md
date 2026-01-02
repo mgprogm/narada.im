@@ -76,7 +76,75 @@ Based on the official Supabase design system documented in:
 - **Body:** 16px (1rem) / 400 weight
 - **Small:** 14px (0.875rem) / 400 weight
 
-### 4. Component Patterns
+### 4. Icons (Lucide React)
+
+**Icon Library:** [Lucide React](https://lucide.dev/)
+
+Following Supabase's design philosophy, we use **muted, monochromatic icons** with semantic colors instead of colorful emojis.
+
+#### Icon Style Guidelines
+
+**Problem/Alert Icons:**
+```html
+<!-- Destructive/Alert (Red tones) -->
+<div class="w-12 h-12 bg-destructive-200 rounded-lg flex items-center justify-center">
+  <AlertCircle class="w-6 h-6 text-destructive" />
+</div>
+
+<!-- Warning (Orange tones) -->
+<div class="w-12 h-12 bg-warning-200 rounded-lg flex items-center justify-center">
+  <RefreshCw class="w-6 h-6 text-warning" />
+</div>
+
+<!-- Neutral (Gray tones) -->
+<div class="w-12 h-12 bg-surface-300 rounded-lg flex items-center justify-center">
+  <Moon class="w-6 h-6 text-foreground-light" />
+</div>
+```
+
+**Solution/Feature Icons:**
+```html
+<!-- Brand color for positive features (Green tones) -->
+<div class="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center">
+  <Clock class="w-8 h-8 text-brand" />
+</div>
+```
+
+#### Icon Sizing
+- **Small icons:** 16px (w-4 h-4) - Checkmarks, inline icons
+- **Medium icons:** 24px (w-6 h-6) - Problem cards
+- **Large icons:** 32px (w-8 h-8) - Solution features
+
+#### Icon Backgrounds
+- **Rounded squares** (`rounded-lg`) - Problems, serious topics
+- **Circles** (`rounded-full`) - Solutions, positive features
+- Container sizes: 48px (w-12 h-12) or 64px (w-16 h-16)
+
+#### Common Icons Used
+```typescript
+import {
+  MessageSquare,   // Chat, messaging
+  Clock,          // Speed, timing
+  TrendingUp,     // Growth, improvement
+  Sparkles,       // AI, magic features
+  Check,          // Checkmarks, completed items
+  AlertCircle,    // Alerts, problems
+  RefreshCw,      // Repeat, cycle
+  Moon,           // Night, after-hours
+  DollarSign,     // Money, pricing
+} from "lucide-react";
+```
+
+#### Color Combinations
+
+| Purpose | Background | Icon Color | Use Case |
+|---------|-----------|------------|----------|
+| Problem/Error | `bg-destructive-200` | `text-destructive` | Alerts, issues |
+| Warning/Caution | `bg-warning-200` | `text-warning` | Warnings, attention |
+| Neutral/Info | `bg-surface-300` | `text-foreground-light` | Information |
+| Solution/Success | `bg-brand-200` | `text-brand` | Features, benefits |
+
+### 5. Component Patterns
 
 #### Buttons
 ```html
@@ -592,6 +660,15 @@ To change the brand color:
 ---
 
 ## Changelog
+
+### Version 1.1 (2026-01-02)
+- ✅ **Replaced emoji icons with Lucide React icons**
+- ✅ Implemented icon design system with semantic colors
+- ✅ Added problem icons (AlertCircle, RefreshCw, Moon, DollarSign)
+- ✅ Added solution icons (Clock, MessageSquare, TrendingUp)
+- ✅ Applied consistent icon sizing and backgrounds
+- ✅ Updated all checkmarks to use brand color
+- ✅ Documented icon usage guidelines
 
 ### Version 1.0 (2026-01-02)
 - ✅ Initial implementation of Supabase design system

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MessageSquare, Clock, TrendingUp, Sparkles, Check } from "lucide-react";
+import { MessageSquare, Clock, TrendingUp, Sparkles, Check, AlertCircle, RefreshCw, Moon, DollarSign } from "lucide-react";
 
 export default function Home() {
   return (
@@ -67,7 +67,9 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-2 mt-12">
               <Card>
                 <CardContent className="pt-6">
-                  <div className="text-red-600 text-4xl mb-4">😰</div>
+                  <div className="w-12 h-12 bg-destructive-200 rounded-lg flex items-center justify-center mb-4">
+                    <AlertCircle className="w-6 h-6 text-destructive" />
+                  </div>
                   <h3 className="font-semibold text-lg mb-2">ตอบลูกค้าไม่ทัน</h3>
                   <p className="text-foreground-light">
                     ลูกค้าถามพร้อมกัน 10+ คน ตอบไม่ทัน เสียโอกาสขาย
@@ -76,27 +78,33 @@ export default function Home() {
               </Card>
               <Card>
                 <CardContent className="pt-6">
-                  <div className="text-red-600 text-4xl mb-4">🔁</div>
+                  <div className="w-12 h-12 bg-warning-200 rounded-lg flex items-center justify-center mb-4">
+                    <RefreshCw className="w-6 h-6 text-warning" />
+                  </div>
                   <h3 className="font-semibold text-lg mb-2">คำถามซ้ำๆ เยอะ</h3>
-                  <p className="text-slate-600">
+                  <p className="text-foreground-light">
                     ราคา, การจัดส่ง, สินค้ามีสต็อกไหม - ตอบซ้ำทั้งวัน
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6">
-                  <div className="text-red-600 text-4xl mb-4">🌙</div>
+                  <div className="w-12 h-12 bg-surface-300 rounded-lg flex items-center justify-center mb-4">
+                    <Moon className="w-6 h-6 text-foreground-light" />
+                  </div>
                   <h3 className="font-semibold text-lg mb-2">นอกเวลาทำการ</h3>
-                  <p className="text-slate-600">
+                  <p className="text-foreground-light">
                     ลูกค้าถามตอนกลางคืน ไม่มีคนตอบ เสียยอดขาย
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6">
-                  <div className="text-red-600 text-4xl mb-4">💸</div>
+                  <div className="w-12 h-12 bg-destructive-200 rounded-lg flex items-center justify-center mb-4">
+                    <DollarSign className="w-6 h-6 text-destructive" />
+                  </div>
                   <h3 className="font-semibold text-lg mb-2">จ้างแอดมินแพง</h3>
-                  <p className="text-slate-600">
+                  <p className="text-foreground-light">
                     จ้างคนเพิ่ม ต้นทุนสูง แต่ยอดขายไม่คุ้ม
                   </p>
                 </CardContent>
@@ -122,25 +130,25 @@ export default function Home() {
                   <Clock className="w-8 h-8 text-brand" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">ตอบทันที</h3>
-                <p className="text-slate-600">
+                <p className="text-foreground-light">
                   ตอบคำถามลูกค้าภายใน 2-5 วินาที ไม่ต้องรอแอดมิน
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageSquare className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageSquare className="w-8 h-8 text-brand" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">ตอบเป็นธรรมชาติ</h3>
-                <p className="text-slate-600">
+                <p className="text-foreground-light">
                   AI เข้าใจภาษาไทย ตอบเหมือนคนจริง ไม่แข็งทื่อ
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-brand" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">ประหยัดเวลา</h3>
-                <p className="text-slate-600">
+                <p className="text-foreground-light">
                   ลดเวลาตอบคำถามจาก 5 นาที → 30 วินาที
                 </p>
               </div>
@@ -169,15 +177,15 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">20 คำถาม/วัน</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">FAQ สูงสุด 30 รายการ</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">1 น้ำเสียง</span>
                   </div>
                   <Link href="/register" className="block mt-6">
@@ -202,19 +210,19 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">200 คำถาม/วัน</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">FAQ ไม่จำกัด</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">ทุกน้ำเสียง</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">ประวัติ 30 วัน</span>
                   </div>
                   <Link href="/register" className="block mt-6">
@@ -236,19 +244,19 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">ไม่จำกัดคำถาม</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">Multi-user (3 accounts)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">Priority support</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-brand" />
                     <span className="text-sm">Export data</span>
                   </div>
                   <Link href="/register" className="block mt-6">
