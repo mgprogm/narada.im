@@ -1,4 +1,4 @@
-# Narada - AI Chatbot for Thai SME Businesses
+# narada - AI Chatbot for Thai SME Businesses
 
 An AI-powered chatbot system that automatically responds to customers 24/7 via Facebook Messenger, helping Thai SME businesses manage customer inquiries efficiently.
 
@@ -19,12 +19,31 @@ An AI-powered chatbot system that automatically responds to customers 24/7 via F
 
 The project implements a professional design system based on Supabase's design philosophy:
 
-- **Color Palette**: Jungle Green (#34B27B) brand color with semantic color tokens
+### Brand Identity
+
+- **Logo**: Custom animated 'N' logo with:
+  - Bold letter 'N' with green gradient (#52d36f → #7de68f → #52d36f)
+  - Rotating Cisco-tech style border with gradient animation (cyan #00d4ff → green #52d36f → blue #0099ff)
+  - White background with green border accent
+  - CSS animations for smooth gradient flow and border rotation
+- **Favicon**: Dark theme favicon (app/icon.svg) with:
+  - Dark blue-gray background (#1a1d29)
+  - Gradient border matching logo style
+  - Auto-generated favicon.ico via Next.js
+- **Brand Name**: lowercase 'narada' for modern, approachable aesthetic
+
+### Design Tokens
+
+- **Color Palette**:
+  - Primary: Jungle Green (#34B27B / #52d36f)
+  - Accent gradients: Cyan (#00d4ff), Light Green (#7de68f), Blue (#0099ff)
+  - Semantic color tokens for consistency
 - **Typography**: Sarabun font family optimized for Thai-English bilingual content
 - **Thai Language Support**: Native Thai character rendering with proper tone marks and vowel positioning
 - **Icons**: Lucide React with muted, monochromatic style and semantic colors
 - **Dark Mode**: Fully supported with `[data-theme="dark"]` attribute
 - **Components**: shadcn/ui components styled with Supabase design tokens
+- **Animations**: Smooth gradient and rotation effects using CSS keyframes
 
 For complete design system documentation, see [docs/DESIGN_SYSTEM_IMPLEMENTATION.md](docs/DESIGN_SYSTEM_IMPLEMENTATION.md).
 
@@ -243,6 +262,8 @@ The project is configured for optimal Vercel deployment:
 ### Phase 1 (Week 1) - MVP ✓
 - ✓ User authentication and registration
 - ✓ Supabase design system with Jungle Green (#34B27B) brand color
+- ✓ Custom animated logo with gradient effects
+- ✓ Dark theme favicon with Cisco-tech gradient border
 - ✓ Professional Lucide React icon system
 - ✓ Sarabun font with native Thai language support
 - ✓ Dark mode support

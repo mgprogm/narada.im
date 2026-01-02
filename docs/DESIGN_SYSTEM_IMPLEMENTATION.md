@@ -24,9 +24,11 @@ Based on the official Supabase design system documented in:
 
 ## Key Design Elements
 
-### 1. Brand Color - Jungle Green
+### 1. Brand Identity
 
-**Primary Brand Color:** `#34B27B` (Jungle Green)
+#### Brand Color - Jungle Green
+
+**Primary Brand Color:** `#34B27B` / `#52d36f` (Jungle Green)
 
 ```css
 /* HSL format for CSS variables */
@@ -40,6 +42,67 @@ Based on the official Supabase design system documented in:
 - Call-to-action elements
 - Links and interactive elements
 - Brand highlights in hero sections
+
+#### Logo Design
+
+**Custom Animated 'N' Logo** - A modern, tech-inspired logo featuring:
+
+**Visual Elements:**
+- Bold letter 'N' (`font-black`, `text-2xl`) with green gradient
+- Text gradient: `#52d36f → #7de68f → #52d36f`
+- Rotating border with Cisco-tech gradient: `#00d4ff → #52d36f → #0099ff`
+- White background with green border accent (`border-[#52d36f]`)
+- Rounded corners (`rounded-lg`)
+
+**Animations:**
+```css
+/* Gradient flow animation */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Border rotation animation */
+@keyframes border-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+```
+
+**Implementation:**
+- Duration: 3 seconds for both animations
+- Timing: `ease` for gradient, `linear` for rotation
+- Letter 'N' stays fixed while border rotates
+- Used in: Landing page header, Dashboard navigation
+
+**Files:**
+- `app/page.tsx:14-21` - Landing page logo
+- `components/dashboard/dashboard-nav.tsx:43-50` - Dashboard logo
+- `app/globals.css:116-145` - Animation definitions
+
+#### Favicon
+
+**Dark Theme Favicon** (`app/icon.svg`)
+
+**Design:**
+- Dark blue-gray background: `#1a1d29`
+- Cisco-tech gradient border: `#00d4ff → #52d36f → #0099ff`
+- Bold 'N' with green gradient matching logo
+- Rounded corners for modern look
+- Size: 64x64px (optimized for all devices)
+
+**Auto-Generation:**
+- Next.js 13+ automatically converts `app/icon.svg` to `favicon.ico`
+- Generates multiple sizes for different devices
+- Supports both modern and legacy browsers
+
+#### Brand Name
+
+**Typography:** lowercase 'narada'
+- Modern, approachable aesthetic
+- Consistent with tech startup branding
+- Uses `font-bold` weight for emphasis
 
 ### 2. Color System
 
