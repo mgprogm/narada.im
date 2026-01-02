@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Sarabun } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-inter",
+const sarabun = Sarabun({
+  subsets: ["latin", "latin-ext", "thai"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-sarabun",
   display: "swap",
 });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th" className={inter.variable} suppressHydrationWarning>
+    <html lang="th" className={sarabun.variable} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <Script
           id="theme-script"

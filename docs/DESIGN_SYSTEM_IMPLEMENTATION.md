@@ -67,7 +67,15 @@ Based on the official Supabase design system documented in:
 
 ### 3. Typography
 
-**Font Family:** Inter (Google Fonts)
+**Font Family:** Sarabun (Google Fonts)
+
+**Character Support:** Latin, Latin Extended, Thai, Vietnamese
+
+**Font Weights Available:**
+- 400 (Regular) - Body text
+- 600 (Semi-Bold) - H3 headings, emphasis
+- 700 (Bold) - H2 headings, buttons
+- 800 (Extra-Bold) - H1 headings, hero text
 
 **Type Scale:**
 - **H1:** 36px (2.25rem) / 700-800 weight
@@ -75,6 +83,33 @@ Based on the official Supabase design system documented in:
 - **H3:** 24px (1.5rem) / 600-700 weight
 - **Body:** 16px (1rem) / 400 weight
 - **Small:** 14px (0.875rem) / 400 weight
+
+#### Thai Language Support
+
+**Why Sarabun?**
+- Open source Thai font designed by Cadson Demak
+- Optimized for screen readability with harmonious Latin characters
+- Proper tone mark placement and vowel positioning
+- Full Thai Unicode range support (Sara Am ำ, tone marks, vowels)
+
+**Font Configuration:**
+```typescript
+// app/layout.tsx
+import { Sarabun } from 'next/font/google';
+
+const sarabun = Sarabun({
+  subsets: ['latin', 'latin-ext', 'thai'],
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-sarabun',
+  display: 'swap',
+});
+```
+
+**Testing Thai Text:**
+```html
+<p className="font-sans">ตอบลูกค้าอัตโนมัติ 24/7</p>
+<h1 className="font-bold">ระบบ AI ที่เข้าใจภาษาไทย</h1>
+```
 
 ### 4. Icons (Lucide React)
 
@@ -660,6 +695,14 @@ To change the brand color:
 ---
 
 ## Changelog
+
+### Version 1.2 (2026-01-02)
+- ✅ **Replaced Inter with Sarabun font for Thai language support**
+- ✅ Added Thai subset for proper character rendering
+- ✅ Updated font fallback chain with Thai-aware system fonts
+- ✅ Optimized font weights (400, 600, 700, 800)
+- ✅ Maintained font loading performance with display: swap
+- ✅ Documented Thai language support and font configuration
 
 ### Version 1.1 (2026-01-02)
 - ✅ **Replaced emoji icons with Lucide React icons**

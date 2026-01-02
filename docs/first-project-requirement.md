@@ -151,6 +151,8 @@ Send reply back to Messenger
 - **Components:** shadcn/ui with custom Supabase colors
 - **Icons:** Lucide React (muted, monochromatic style)
 - **Icon Colors:** Semantic colors (destructive, warning, brand, neutral)
+- **Font:** Sarabun (Google Fonts) with Thai language support
+- **Font Weights:** 400, 600, 700, 800
 
 ### Payment
 - **PromptPay:** QR Code generation (manual verification)
@@ -244,8 +246,10 @@ Send reply back to Messenger
 - [x] **Implement icon design system with semantic colors**
 - [x] **Apply consistent brand color throughout UI**
 - [x] **Create comprehensive documentation**
+- [x] **Replace Inter with Sarabun font for Thai language support**
+- [x] **Add Thai subset for proper character rendering**
 
-**Deliverable:** ✅ Project setup พร้อม, database schema, design system implemented, icons updated
+**Deliverable:** ✅ Project setup พร้อม, database schema, design system implemented, icons updated, Thai font support added
 
 **Documentation:**
 - See `docs/DESIGN_SYSTEM_IMPLEMENTATION.md` for complete design system details (includes icon guidelines)

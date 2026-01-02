@@ -84,11 +84,12 @@ const config: Config = {
 
       fontFamily: {
         sans: [
-          "var(--font-inter)",
-          "Inter",
-          "Circular",
-          "Helvetica Neue",
-          "Helvetica",
+          "var(--font-sarabun)",
+          "Sarabun",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Noto Sans Thai",
           "Arial",
           "sans-serif",
         ],
