@@ -92,7 +92,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-surface-100 to-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">สมัครสมาชิก</CardTitle>
@@ -103,7 +103,7 @@ export default function RegisterPage() {
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
             {error && (
-              <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+              <div className="p-3 text-sm text-destructive bg-destructive-200 border border-destructive-300 rounded-md">
                 {error}
               </div>
             )}
@@ -161,9 +161,9 @@ export default function RegisterPage() {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "กำลังสมัครสมาชิก..." : "สมัครสมาชิก"}
             </Button>
-            <div className="text-sm text-center text-slate-600">
+            <div className="text-sm text-center text-foreground-light">
               มีบัญชีอยู่แล้ว?{" "}
-              <Link href="/login" className="text-blue-600 hover:underline font-medium">
+              <Link href="/login" className="text-brand hover:text-brand-600 hover:underline font-medium">
                 เข้าสู่ระบบ
               </Link>
             </div>

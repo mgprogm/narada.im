@@ -132,16 +132,24 @@ Send reply back to Messenger
 ## 🎨 Tech Stack
 
 ### Frontend
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS + shadcn/ui
+- **Framework:** Next.js 16.1.1 (App Router with Turbopack)
+- **Styling:** Tailwind CSS v3.4 + shadcn/ui
+- **Design System:** Supabase-inspired (Jungle Green #34B27B)
 - **State:** Zustand หรือ React Context
 - **Forms:** React Hook Form + Zod
+- **Fonts:** Inter (Google Fonts)
 
 ### Backend
 - **API:** Next.js API Routes
 - **Database:** Supabase (PostgreSQL)
-- **Auth:** Supabase Auth หรือ NextAuth.js
+- **Auth:** Supabase Auth
 - **AI:** OpenAI GPT-4o-mini หรือ Claude API
+
+### Design & Theme
+- **Color System:** CSS custom properties with HSL format
+- **Dark Mode:** Supported via `[data-theme="dark"]` attribute
+- **Components:** shadcn/ui with custom Supabase colors
+- **Icons:** Lucide React
 
 ### Payment
 - **PromptPay:** QR Code generation (manual verification)
@@ -216,18 +224,25 @@ Send reply back to Messenger
 
 ## 🗓️ 7-Day Development Roadmap
 
-### Day 1: Foundation & Strategy
+### Day 1: Foundation & Strategy ✅ COMPLETED
 **เช้า**
 - [x] Finalize Persona & Pain Points
 - [x] เขียน Sales message / Landing page copy
 - [x] กำหนด Tech stack
 
 **บ่าย**
-- [ ] Setup Next.js + Tailwind + Supabase
-- [ ] Init Git repository
-- [ ] Database schema design
+- [x] Setup Next.js + Tailwind + Supabase
+- [x] Init Git repository
+- [x] Database schema design
+- [x] **Implement Supabase Design System**
+- [x] **Fix Tailwind v4 → v3 compatibility issue**
+- [x] **Configure theme system with dark mode support**
 
-**Deliverable:** Project setup พร้อม, database schema
+**Deliverable:** ✅ Project setup พร้อม, database schema, design system implemented
+
+**Documentation:**
+- See `docs/DESIGN_SYSTEM_IMPLEMENTATION.md` for complete design system details
+- See `docs/SUPABASE_DESIGN_SYSTEM.md` for design reference
 
 ---
 

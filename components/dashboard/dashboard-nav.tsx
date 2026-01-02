@@ -37,10 +37,10 @@ export function DashboardNav() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col">
-      <div className="p-6 border-b border-slate-200">
-        <h1 className="text-xl font-bold text-slate-900">Narada</h1>
-        <p className="text-sm text-slate-500">AI Assistant</p>
+    <aside className="w-64 bg-surface-100 border-r border-border flex flex-col">
+      <div className="p-6 border-b border-border">
+        <h1 className="text-xl font-bold text-foreground">Narada</h1>
+        <p className="text-sm text-foreground-light">AI Assistant</p>
       </div>
       <nav className="flex-1 p-4 space-y-1">
         {navItems.map((item) => {
@@ -54,8 +54,8 @@ export function DashboardNav() {
               className={cn(
                 "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
                 isActive
-                  ? "bg-blue-50 text-blue-600 font-medium"
-                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  ? "bg-brand-200 text-brand-600 font-medium"
+                  : "text-foreground-light hover:bg-surface-200 hover:text-foreground"
               )}
             >
               <Icon className="w-5 h-5" />
@@ -64,10 +64,10 @@ export function DashboardNav() {
           );
         })}
       </nav>
-      <div className="p-4 border-t border-slate-200">
-        <div className="px-4 py-3 bg-slate-50 rounded-lg">
-          <p className="text-xs font-medium text-slate-900">แผน Free Trial</p>
-          <p className="text-xs text-slate-500 mt-1">เหลืออีก 7 วัน</p>
+      <div className="p-4 border-t border-border">
+        <div className="px-4 py-3 bg-surface-200 rounded-lg">
+          <p className="text-xs font-medium text-foreground">แผน Free Trial</p>
+          <p className="text-xs text-foreground-light mt-1">เหลืออีก 7 วัน</p>
         </div>
       </div>
     </aside>

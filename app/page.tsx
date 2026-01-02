@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-slate-200 bg-white">
+      <header className="border-b border-border bg-surface-100">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <MessageSquare className="w-6 h-6 text-blue-600" />
+            <MessageSquare className="w-6 h-6 text-brand" />
             <span className="text-xl font-bold">Narada</span>
           </div>
           <div className="flex items-center gap-4">
@@ -26,16 +26,16 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-slate-50">
+      <section className="py-20 bg-gradient-to-br from-brand-200/20 to-surface-100">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4">AI-Powered Customer Support</Badge>
-            <h1 className="text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-5xl font-bold text-foreground mb-6">
               ตอบลูกค้าอัตโนมัติ 24/7
               <br />
-              <span className="text-blue-600">บน Facebook Messenger</span>
+              <span className="text-brand">บน Facebook Messenger</span>
             </h1>
-            <p className="text-xl text-slate-600 mb-8">
+            <p className="text-xl text-foreground-light mb-8">
               ให้ AI ช่วยตอบคำถามซ้ำๆ ของลูกค้า ลดภาระงานแอดมิน<br/>
               เพิ่มยอดขาย ไม่พลาดโอกาสทั้งกลางวันและกลางคืน
             </p>
@@ -50,7 +50,7 @@ export default function Home() {
                 ดูตัวอย่างการใช้งาน
               </Button>
             </div>
-            <p className="text-sm text-slate-500 mt-4">
+            <p className="text-sm text-foreground-muted mt-4">
               ไม่ต้องใส่บัตรเครดิต • ตั้งค่าง่ายใน 5 นาที
             </p>
           </div>
@@ -58,10 +58,10 @@ export default function Home() {
       </section>
 
       {/* Problems Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-surface-100">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">
+            <h2 className="text-3xl font-bold text-center text-foreground mb-4">
               ปัญหาที่ร้านค้าออนไลน์ต้องเจอทุกวัน
             </h2>
             <div className="grid gap-6 md:grid-cols-2 mt-12">
@@ -69,7 +69,7 @@ export default function Home() {
                 <CardContent className="pt-6">
                   <div className="text-red-600 text-4xl mb-4">😰</div>
                   <h3 className="font-semibold text-lg mb-2">ตอบลูกค้าไม่ทัน</h3>
-                  <p className="text-slate-600">
+                  <p className="text-foreground-light">
                     ลูกค้าถามพร้อมกัน 10+ คน ตอบไม่ทัน เสียโอกาสขาย
                   </p>
                 </CardContent>
@@ -107,19 +107,19 @@ export default function Home() {
       </section>
 
       {/* Solution Section */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">
+            <h2 className="text-3xl font-bold text-center text-foreground mb-4">
               Narada แก้ปัญหาได้ยังไง?
             </h2>
-            <p className="text-center text-slate-600 mb-12">
+            <p className="text-center text-foreground-light mb-12">
               ระบบ AI ที่เข้าใจภาษาไทย ช่วยคุณตอบลูกค้าได้อย่างเป็นธรรมชาติ
             </p>
             <div className="grid gap-8 md:grid-cols-3">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Clock className="w-8 h-8 text-brand" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">ตอบทันที</h3>
                 <p className="text-slate-600">
@@ -150,11 +150,11 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-surface-100">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">แผนการใช้งาน</h2>
-            <p className="text-center text-slate-600 mb-12">
+            <h2 className="text-3xl font-bold text-center text-foreground mb-4">แผนการใช้งาน</h2>
+            <p className="text-center text-foreground-light mb-12">
               เริ่มต้นฟรี 7 วัน ไม่ต้องใส่บัตรเครดิต
             </p>
             <div className="grid gap-6 md:grid-cols-3">
@@ -164,7 +164,7 @@ export default function Home() {
                   <CardDescription>ทดลองใช้งาน</CardDescription>
                   <div className="mt-4">
                     <span className="text-4xl font-bold">0฿</span>
-                    <span className="text-slate-500">/7 วัน</span>
+                    <span className="text-foreground-light">/7 วัน</span>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-2">
@@ -188,7 +188,7 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              <Card className="border-blue-600 border-2 relative">
+              <Card className="border-brand border-2 relative">
                 <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
                   แนะนำ
                 </Badge>
@@ -264,12 +264,12 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600 text-white">
+      <section className="py-20 bg-brand text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">
             พร้อมที่จะลดภาระงาน<br/>และเพิ่มยอดขายแล้วหรือยัง?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-xl mb-8 text-brand-200">
             เริ่มใช้งานฟรี 7 วัน ไม่ต้องใส่บัตรเครดิต
           </p>
           <Link href="/register">
@@ -282,7 +282,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-slate-900 text-slate-400">
+      <footer className="py-8 bg-foreground text-foreground-muted">
         <div className="container mx-auto px-4 text-center">
           <p>&copy; 2026 Narada. All rights reserved.</p>
         </div>

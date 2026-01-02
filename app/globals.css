@@ -4,58 +4,100 @@
 
 @layer base {
   :root {
+    /* Light mode colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --foreground: 222 47% 11%;
+    --foreground-light: 215 16% 47%;
+    --foreground-lighter: 215 14% 71%;
+    --foreground-muted: 215 10% 82%;
+
+    --surface-100: 210 20% 98%;
+    --surface-200: 210 16% 93%;
+    --surface-300: 210 14% 89%;
+
+    --overlay: 0 0% 100%;
+    --control: 0 0% 100%;
+    --button: 0 0% 100%;
+
+    --border: 214 14% 90%;
+    --border-secondary: 214 12% 85%;
+    --border-alternative: 0 0% 100%;
+    --border-overlay: 214 14% 90%;
+    --border-control: 216 12% 84%;
+    --border-strong: 215 16% 47%;
+    --border-stronger: 215 19% 35%;
+    --border-button: 214 14% 90%;
+    --border-button-hover: 215 16% 47%;
+
+    --brand: 158 53% 45%; /* #34B27B */
+    --brand-200: 158 53% 85%;
+    --brand-300: 158 53% 75%;
+    --brand-400: 158 53% 60%;
+    --brand-500: 158 53% 45%;
+    --brand-600: 158 53% 35%;
+
+    --destructive: 0 84% 60%;
+    --destructive-200: 0 84% 95%;
+    --destructive-300: 0 84% 85%;
+    --destructive-400: 0 84% 70%;
+    --destructive-500: 0 84% 60%;
+    --destructive-600: 0 84% 45%;
+
+    --warning: 38 92% 50%;
+    --warning-200: 38 92% 95%;
+    --warning-300: 38 92% 85%;
+    --warning-400: 38 92% 65%;
+    --warning-500: 38 92% 50%;
+    --warning-600: 38 92% 40%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+  [data-theme="dark"] {
+    /* Dark mode colors */
+    --background: 222 47% 11%;
+    --foreground: 210 20% 98%;
+    --foreground-light: 215 16% 65%;
+    --foreground-lighter: 215 14% 45%;
+    --foreground-muted: 215 10% 35%;
+
+    --surface-100: 222 41% 13%;
+    --surface-200: 222 37% 15%;
+    --surface-300: 222 33% 17%;
+
+    --overlay: 222 41% 13%;
+    --control: 222 41% 13%;
+    --button: 222 41% 13%;
+
+    --border: 217 19% 27%;
+    --border-secondary: 217 19% 32%;
+    --border-alternative: 222 47% 11%;
+    --border-overlay: 217 19% 27%;
+    --border-control: 217 19% 27%;
+    --border-strong: 215 16% 47%;
+    --border-stronger: 215 14% 71%;
+    --border-button: 217 19% 27%;
+    --border-button-hover: 215 16% 47%;
+
+    /* Brand colors remain similar */
+    --brand: 158 53% 45%;
+    --brand-200: 158 53% 25%;
+    --brand-300: 158 53% 35%;
+    --brand-400: 158 53% 40%;
+    --brand-500: 158 53% 45%;
+    --brand-600: 158 53% 55%;
+
+    --destructive: 0 84% 60%;
+    --destructive-200: 0 84% 25%;
+    --destructive-300: 0 84% 35%;
+    --destructive-400: 0 84% 50%;
+    --destructive-500: 0 84% 60%;
+    --destructive-600: 0 84% 70%;
+
+    --warning: 38 92% 50%;
+    --warning-200: 38 92% 25%;
+    --warning-300: 38 92% 35%;
+    --warning-400: 38 92% 45%;
+    --warning-500: 38 92% 50%;
+    --warning-600: 38 92% 60%;
   }
 }
 
@@ -63,8 +105,10 @@
   * {
     border-color: hsl(var(--border));
   }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
