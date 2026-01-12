@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare, Clock, TrendingUp, Sparkles, Check, AlertCircle, RefreshCw, Moon, DollarSign } from "lucide-react";
+import ChatbotOverlay from "@/components/landing/ChatbotOverlay";
 
 export const metadata: Metadata = {
   title: 'ตอบลูกค้าอัตโนมัติ 24/7 บน Facebook Messenger ด้วย AI',
@@ -384,6 +385,9 @@ export default function Home() {
           <p>&copy; 2026 Narada. All rights reserved.</p>
         </div>
       </footer>
+
+      {/* Chatbot Overlay */}
+      <ChatbotOverlay />
     </div>
   );
 }
