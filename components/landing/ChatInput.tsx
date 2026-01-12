@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, KeyboardEvent, useRef, useEffect } from "react";
+import { useState, KeyboardEvent, useRef, useEffect, useCallback, memo } from "react";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { INPUT_CONFIG, CHAT_RADIUS } from "./chat-constants";
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -11,7 +12,11 @@ interface ChatInputProps {
   placeholder?: string;
 }
 
-export function ChatInput({ onSendMessage, disabled = false, placeholder = "พิมพ์คำถามของคุณ..." }: ChatInputProps) {
+export const ChatInput = memo(function ChatInput({
+  onSendMessage,
+  disabled = false,
+  placeholder = INPUT_CONFIG.placeholder,
+}: ChatInputProps) {
   const [value, setValue] = useState("");
   const [hasError, setHasError] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -21,11 +26,11 @@ export function ChatInput({ onSendMessage, disabled = false, placeholder = "พ�
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = "auto";
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 72)}px`; // Max 3 lines (~24px per line)
+      textarea.style.height = `${Math.min(textarea.scrollHeight, INPUT_CONFIG.maxHeight)}px`;
     }
   }, [value]);
 
-  const handleSend = () => {
+  const handleSend = useCallback(() => {
     const trimmedValue = value.trim();
 
     if (trimmedValue === "") {
@@ -41,24 +46,25 @@ export function ChatInput({ onSendMessage, disabled = false, placeholder = "พ�
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
     }
-  };
+  }, [value, onSendMessage]);
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleSend();
+      }
+    },
+    [handleSend]
+  );
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
-    if (hasError) {
-      setHasError(false);
-    }
-  };
+    setHasError(false);
+  }, []);
 
   return (
-    <div className="border-t bg-background p-4 rounded-b-none md:rounded-b-2xl">
+    <div className={`border-t bg-background p-4 ${CHAT_RADIUS.footer}`}>
       <div className="flex gap-2 items-end">
         <div className="flex-1 relative">
           <textarea
@@ -70,29 +76,28 @@ export function ChatInput({ onSendMessage, disabled = false, placeholder = "พ�
             placeholder={placeholder}
             rows={1}
             className={cn(
-              "w-full resize-none rounded-lg border bg-background px-4 py-3 text-sm",
+              "w-full resize-none border bg-background px-4 py-3 text-sm",
+              CHAT_RADIUS.input,
               "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
               "disabled:cursor-not-allowed disabled:opacity-50",
               "placeholder:text-muted-foreground",
               "transition-colors",
               hasError && "border-red-500 focus:ring-red-500"
             )}
-            style={{ maxHeight: "72px", overflowY: "auto" }}
+            style={{ maxHeight: `${INPUT_CONFIG.maxHeight}px`, overflowY: "auto" }}
           />
         </div>
         <Button
           onClick={handleSend}
           disabled={disabled}
           size="icon"
-          className="h-12 w-12 shrink-0"
+          className={`h-12 w-12 shrink-0 ${CHAT_RADIUS.button}`}
           aria-label="ส่งข้อความ"
         >
           <Sparkles className="h-5 w-5" />
         </Button>
       </div>
-      {hasError && (
-        <p className="text-xs text-red-500 mt-2">กรุณาใส่คำถามค่ะ</p>
-      )}
+      {hasError && <p className="text-xs text-red-500 mt-2">กรุณาใส่คำถามค่ะ</p>}
     </div>
   );
-}
+});

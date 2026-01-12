@@ -1,87 +1,80 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { MessageSquare } from "lucide-react";
 import { Dialog, DialogContent, DialogPortal, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
-import { ChatInterface, Message } from "./ChatInterface";
+import { ChatInterface } from "./ChatInterface";
+import { useChatMessages } from "./useChatMessages";
+import { useChatAPI } from "./useChatAPI";
 import { cn } from "@/lib/utils";
+import {
+  CHAT_COLORS,
+  CHAT_DIMENSIONS,
+  CHAT_Z_INDEX,
+  CHAT_ANIMATIONS,
+  CHAT_RADIUS,
+} from "./chat-constants";
 
 export default function ChatbotOverlay() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
 
-  const handleSendMessage = async (messageText: string) => {
-    // Mark as interacted to hide quick replies
-    if (!hasInteracted) {
-      setHasInteracted(true);
-    }
+  // Use custom hooks for state management
+  const {
+    messages,
+    isLoading,
+    setIsLoading,
+    hasInteracted,
+    addUserMessage,
+    addBotMessage,
+    markAsInteracted,
+  } = useChatMessages();
 
-    // Add user message
-    const userMessage: Message = {
-      id: `user-${Date.now()}`,
-      role: "user",
-      content: messageText,
-      timestamp: new Date(),
-    };
+  // API handler callbacks
+  const handleAPISuccess = useCallback(
+    (answer: string) => {
+      addBotMessage(answer);
+    },
+    [addBotMessage]
+  );
 
-    setMessages((prev) => [...prev, userMessage]);
-    setIsLoading(true);
+  const handleAPIError = useCallback(
+    (error: string) => {
+      addBotMessage(error);
+    },
+    [addBotMessage]
+  );
 
-    try {
-      // Call demo API
-      const response = await fetch("/api/demo/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ question: messageText }),
-      });
+  // Use API hook
+  const { sendMessage } = useChatAPI({
+    onSuccess: handleAPISuccess,
+    onError: handleAPIError,
+    setIsLoading,
+  });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "เกิดข้อผิดพลาดในการตอบกลับค่ะ");
+  // Handle sending messages
+  const handleSendMessage = useCallback(
+    async (messageText: string) => {
+      // Mark as interacted to hide quick replies
+      if (!hasInteracted) {
+        markAsInteracted();
       }
 
-      const data = await response.json();
+      // Add user message
+      addUserMessage(messageText);
 
-      // Add bot response
-      const botMessage: Message = {
-        id: `bot-${Date.now()}`,
-        role: "bot",
-        content: data.answer,
-        timestamp: new Date(),
-      };
+      // Send to API
+      await sendMessage(messageText);
+    },
+    [hasInteracted, markAsInteracted, addUserMessage, sendMessage]
+  );
 
-      setMessages((prev) => [...prev, botMessage]);
-    } catch (error) {
-      console.error("Error sending message:", error);
-
-      // Add error message
-      const errorMessage: Message = {
-        id: `error-${Date.now()}`,
-        role: "bot",
-        content:
-          error instanceof Error
-            ? error.message
-            : "ขออภัยค่ะ ระบบขัดข้องชั่วคราว กรุณาลองใหม่อีกครั้งค่ะ",
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, errorMessage]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
-  const handleOpen = () => {
+  const handleOpen = useCallback(() => {
     setIsOpen(true);
-  };
+  }, []);
 
   return (
     <>
@@ -92,24 +85,25 @@ export default function ChatbotOverlay() {
           aria-label="เปิดแชทบอท"
           className={cn(
             // Position with safe spacing for touch targets
-            "fixed bottom-5 right-5 md:bottom-8 md:right-8",
+            "fixed",
+            CHAT_DIMENSIONS.mobile.triggerPosition,
+            CHAT_DIMENSIONS.desktop.triggerPosition,
             // Safe area insets for notched devices (iOS)
             "pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]",
             // Size
-            "w-14 h-14 md:w-16 md:h-16",
+            CHAT_DIMENSIONS.mobile.trigger,
+            CHAT_DIMENSIONS.desktop.trigger,
             "rounded-full",
             // Colors and gradients
-            "bg-gradient-to-r from-[#34B27B] to-[#2a9463]",
+            CHAT_COLORS.brand.gradient,
             "text-white",
             // Shadows
-            "shadow-lg shadow-[#34B27B]/30",
-            "hover:shadow-xl hover:shadow-[#34B27B]/40",
+            CHAT_COLORS.shadow.base,
+            `hover:${CHAT_COLORS.shadow.hover}`,
             // Hover effects
-            "hover:scale-110",
-            "active:scale-95",
-            "transition-all duration-200",
+            CHAT_ANIMATIONS.scaleHover,
             // High z-index to stay above everything
-            "z-[9999]",
+            CHAT_Z_INDEX.button,
             // Flex layout
             "flex items-center justify-center",
             "overflow-hidden",
@@ -120,38 +114,44 @@ export default function ChatbotOverlay() {
             "min-w-[44px] min-h-[44px]"
           )}
         >
-        {/* Animated border */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#34B27B] via-[#2a9463] to-[#34B27B] bg-[length:200%_100%] animate-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
+          {/* Animated border */}
+          <div
+            className={`absolute inset-0 rounded-full ${CHAT_COLORS.brand.gradientAnimated} ${CHAT_ANIMATIONS.gradient} opacity-0 group-hover:opacity-100 transition-opacity`}
+          />
 
-        {/* Icon */}
-        <MessageSquare className="h-6 w-6 md:h-7 md:w-7 relative z-10" />
-      </button>
+          {/* Icon */}
+          <MessageSquare className="h-6 w-6 md:h-7 md:w-7 relative z-10" />
+        </button>
       )}
 
       {/* Dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogPortal>
-          <DialogOverlay className="bg-transparent z-[9998]" />
+          <DialogOverlay className={`fixed inset-0 bg-transparent ${CHAT_Z_INDEX.overlay}`} />
           <DialogContent
             className={cn(
               // Mobile: full screen with safe area insets
-              "fixed inset-0 w-full h-full p-0 m-0 border-0 rounded-none",
-              // Override default Dialog rounded corners on small screens
-              "sm:rounded-none",
+              "fixed inset-0 w-full h-full p-0 m-0 border-0",
+              CHAT_RADIUS.container.mobile,
+              // Override default Dialog styles
+              "sm:rounded-none sm:max-w-none",
+              // Critical: Override default transforms on mobile
+              "left-0 top-0 translate-x-0 translate-y-0",
               // Desktop: bottom-right positioned (aligned with button)
-              "md:inset-auto md:bottom-8 md:right-8 md:left-auto md:top-auto",
-              "md:w-[400px] md:h-[600px]",
-              "md:rounded-2xl md:border",
+              "md:inset-auto md:left-auto md:top-auto",
+              `md:bottom-8 md:right-8`,
+              CHAT_DIMENSIONS.desktop.dialog,
+              "md:max-w-[400px]",
+              CHAT_RADIUS.container.desktop,
+              "md:border",
               // Animations
               "data-[state=open]:animate-in data-[state=closed]:animate-out",
               "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
               "md:data-[state=closed]:slide-out-to-bottom-4 md:data-[state=open]:slide-in-from-bottom-4",
-              // Transform fix for custom positioning
-              "md:translate-x-0 md:translate-y-0",
               // Remove default close button (we have custom one in ChatInterface)
               "[&>button]:hidden",
               // High z-index
-              "z-[9999]"
+              CHAT_Z_INDEX.dialog
             )}
           >
             {/* Visually hidden title for screen readers */}
